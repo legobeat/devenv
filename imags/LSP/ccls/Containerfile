@@ -1,0 +1,41 @@
+# syntax=docker/dockerfile:1.4-labs
+ARG ALPINE_VERSION=3.20
+ARG BASE_IMAGE=localhost/l7/alpine:${ALPINE_VERSION}
+FROM alpine:${ALPINE_VERSION} as builder
+
+RUN apk add --no-cache \
+    clang17-dev clang17-static \
+    llvm17-dev llvm17-static llvm17-gtest \
+    cmake make \
+    git
+
+ARG EXTRA_PKGS='icu-dev openssl-dev qt6-qtbase-dev qt6-qttools-dev zlib-dev'
+RUN apk add --no-cache ${EXTRA_PKGS}
+
+WORKDIR /ccls
+
+ARG CCLS_VERSION=e5e101253a07e9f40f6ea54024a9a454978f6a58 # 0.20240505
+
+RUN git init \
+  && git remote add origin https://github.com/MaskRay/ccls \
+  && git fetch --depth 1 origin ${CCLS_VERSION} \
+  && git checkout FETCH_HEAD \
+  && git submodule update --init --recursive
+
+RUN cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
+                        -DCMAKE_CXX_COMPILER=/usr/bin/clang++-17 \
+                        -DCMAKE_PREFIX_PATH=/usr/lib/llvm17
+RUN cmake --build Release
+RUN cmake --build Release --target install
+
+FROM ${BASE_IMAGE}
+
+USER root
+
+RUN apk add --no-cache clang17
+
+COPY --from=builder /usr/local/bin/ccls /usr/local/bin/ccls
+
+USER user:userz
+
+ENTRYPOINT ["/usr/local/bin/ccls"]

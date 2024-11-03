@@ -1,0 +1,10 @@
+#!/bin/bash
+export RUNNER_IMAGE="${RUNNER_IMAGE:-${CCLS_RUNNER_IMAGE:-localhost/l7/ccls:lsp-latest}}"
+export RUNNER_OPTS="${RUNNER_OPTS} -i "
+export RUNNER_IMAGE="${RUNNER_IMAGE:-${CCLS_RUNNER_IMAGE}}"
+
+export RUNNER_ENV="${RUNNER_ENV}
+HOME=/home/user
+"
+
+exec l7-cnt-run ccls ${@}

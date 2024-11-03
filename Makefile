@@ -243,6 +243,13 @@ image_runner_node: image_runner_node_20 # image_runner_node_18 image_runner_node
 	    "${IMAGE_NAME}:${IMAGE_TAG}"
 
 ### LSP
+# ccls
+image_lsp_ccls: #images_deps
+	${CMD} buildx build \
+		${BUILD_OPTIONS} \
+		-t "${IMAGE_REPO}/ccls:lsp-latest" \
+		-f './imags/LSP/ccls/Containerfile' \
+		./imags/LSP/ccls
 # gopls
 image_lsp_go : IMAGE_NAME = ${GO_RUNNER_IMAGE_NAME}
 image_lsp_go : IMAGE_TAG = ${GO_RUNNER_IMAGE_TAG}
@@ -498,8 +505,9 @@ images: images_deps image_runner_node image_dnsmasq image_gpg_pk image_dev_shell
 
 images_gui: images image_xterm image_firefox image_vnc
 
+images_lsp: image_lsp_node image_lsp_ccls image_lsp_go
 # these are optional and not enabled by default due to extra build time and disk usage
-images_opt: images_gui image_runner_node_all image_runner_go image_lsp_go
+images_opt: images_gui image_runner_node_all images_lsp image_runner_go images_runner_node_puppeteer image_android_adb images_runner_mermaid image_android_emulator
 
 images_test: images image_nvim_test
 
