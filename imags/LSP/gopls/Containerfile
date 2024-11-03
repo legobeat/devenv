@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4-labs
 ARG GO_VERSION=1.22
 ARG BASE_IMAGE=localhost/l7/go:${GO_VERSION}-bookworm
 FROM ${BASE_IMAGE}

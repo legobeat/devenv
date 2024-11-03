@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4-labs
 ARG NODE_VERSION=20
 ARG BASE_IMAGE=localhost/l7/node:${NODE_VERSION}-bookworm
 ARG BUILDER_IMAGE=${BASE_IMAGE}
