@@ -11,14 +11,25 @@ ARG GID=1000
 USER root
 
 RUN apk add --no-cache \
-    xbindkeys xkeyboard-config xsetroot xsel \
-    font-source-code-pro-nerd font-terminus-nerd font-noto-symbols font-noto-emoji font-nerd-fonts-symbols nerd-fonts \
-    font-awesome font-adobe-source-code-pro font-jetbrains-mono-nerd ttf-dejavu \
-    font-terminus font-noto font-noto-thai font-ipa font-sony-misc font-jis-misc font-inconsolata font-dejavu font-noto font-awesome font-noto-extra font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic \
-    # font-noto-cjk \
-    mesa-dri-gallium mesa-vulkan-swrast xf86-video-fbdev xf86-video-vesa \
-    scrot feh
+    font-anonymous-pro-nerd \
+    font-jetbrains-mono-nerd \
+    font-source-code-pro-nerd \
+    font-terminus-nerd \
+    font-nerd-fonts-symbols \
+    nerd-fonts \
     # nerd-fonts-all \
+    font-adobe-source-code-pro ttf-dejavu \
+    font-terminus \
+    font-inconsolata \
+    font-dejavu \
+    font-awesome \
+    font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic \
+    font-noto font-noto-emoji font-noto-extra font-noto-symbols font-noto-thai \
+    # font-noto-cjk \
+    font-ipa font-sony-misc font-jis-misc \
+    mesa-dri-gallium mesa-vulkan-swrast xf86-video-fbdev xf86-video-vesa \
+    xbindkeys xkeyboard-config xsetroot xsel \
+    scrot feh
 
 RUN mkdir -p /tmp/.X11-unix && chmod 177 /tmp/.X11-unix
 
