@@ -247,7 +247,8 @@ image_runner_node: image_runner_node_20 # image_runner_node_18 image_runner_node
 image_lsp_ccls: #images_deps
 	${CMD} buildx build \
 		${BUILD_OPTIONS} \
-		-t "${IMAGE_REPO}/ccls:lsp-latest" \
+		-t "${IMAGE_REPO}/ccls:lsp-llvm17-alpine" \
+		-t "${IMAGE_REPO}/ccls:lsp" \
 		-f './imags/LSP/ccls/Containerfile' \
 		./imags/LSP/ccls
 # gopls
@@ -372,6 +373,11 @@ test_lsp_go: image_lsp_go
 		"${IMAGE_REPO}/go:lsp-${GO_RUNNER_IMAGE_TAG}" \
 		-c 'gopls version'
 
+test_lsp_ccls: image_lsp_ccls
+	${CMD} run --rm \
+		--entrypoint sh \
+		"${IMAGE_REPO}/ccls:lsp" \
+		--version
 
 # inspect jobs here just for ci, not really useful otherwise
 
