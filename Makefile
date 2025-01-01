@@ -131,10 +131,10 @@ image_podman_remote : submodules image_alpine
 image_alpine : submodules image_caddy
 	${CMD} buildx build \
 		${BUILD_OPTIONS} \
-		--build-arg "ALPINE_VERSION=3.20" \
+		--build-arg "ALPINE_VERSION=3.21" \
 		--build-arg "EXTRA_PKGS=" \
 		--build-arg "SHELL=/bin/bash" \
-		-t "${IMAGE_REPO}/alpine:3.20" \
+		-t "${IMAGE_REPO}/alpine:3.21" \
 		-f './imags/alpine/Containerfile' \
 		.
 

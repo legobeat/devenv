@@ -19,12 +19,12 @@ services:
       context: ../.
       dockerfile: imags/alpine/Containerfile
       args:
-        ALPINE_VERSION: '3.20'
+        ALPINE_VERSION: '3.21'
         EXTRA_PKGS: ''
       tags:
         - 'localhost/l7/alpine:latest'
-        - 'localhost/l7/alpine:3.20'
-    image: 'localhost/l7/alpine:3.20'
+        - 'localhost/l7/alpine:3.21'
+    image: 'localhost/l7/alpine:3.21'
 
   build-hub:
     profiles:
@@ -101,11 +101,11 @@ services:
       context: ../imags/X11/alpine
       dockerfile: ./Containerfile
       args:
-        BASE_IMAGE: 'localhost/l7/alpine:3.20'
+        BASE_IMAGE: 'localhost/l7/alpine:3.21'
         EXTRA_PKGS: ''
       tags:
         - 'localhost/l7/alpine:x11-latest'
-        - 'localhost/l7/alpine:x11-3.20'
+        - 'localhost/l7/alpine:x11-3.21'
     image: 'localhost/l7/alpine:x11'
 
   build-xterm-on-podman-remote-on-x11:

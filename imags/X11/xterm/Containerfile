@@ -3,7 +3,7 @@ ARG X11_BASE_IMAGE=localhost/l7/alpine:x11
 ARG BASE_IMAGE=localhost/l7/alpine:x11
 
 FROM ${X11_BASE_IMAGE} AS x11_base
-#ARG BASE_IMAGE=alpine:3.20
+#ARG BASE_IMAGE=alpine:3.21
 #ARG EXTENSION_BUILDER_IMAGE=localhost/l7/node:20-bookworm
 #FROM ${EXTENSION_BUILDER_IMAGE} AS extension-builder
 #

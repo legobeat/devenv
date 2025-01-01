@@ -97,11 +97,11 @@ jobs:
             file: imags/alpine/Containerfile
             context: .
             tags:  |
-              localhost/l7/alpine:3.20
+              localhost/l7/alpine:3.21
               ghcr.io/legobeat/l7-devenv/alpine:latest
-              ghcr.io/legobeat/l7-devenv/alpine:3.20
+              ghcr.io/legobeat/l7-devenv/alpine:3.21
               ghcr.io/legobeat/l7-devenv/alpine:${{ github.ref_name }}
-              ghcr.io/legobeat/l7-devenv/alpine:3.20-${{ github.ref_name }}
+              ghcr.io/legobeat/l7-devenv/alpine:3.21-${{ github.ref_name }}
             build-args: |
               CADDY_IMAGE=ghcr.io/legobeat/l7-devenv/caddy:${{ github.ref_name }}
     # exact duplicate of publish steps for other images. yaml anchors not supported in gha

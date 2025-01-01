@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4-labs
-ARG BASE_IMAGE=localhost/l7/alpine:3.20
+ARG BASE_IMAGE=localhost/l7/alpine:3.21
 ARG CADDY_IMAGE=localhost/l7/caddy:latest
-FROM alpine:3.20 AS base
+FROM alpine:3.21 AS base
 
 
 # EXTRA_BASE_PKGS get installed in both build and runtime. Example of useful packages:

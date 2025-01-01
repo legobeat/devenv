@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4-labs
 #######################
-FROM alpine:3.20
+FROM alpine:3.21
 
 ARG EXTRA_BASE_PKGS=""
 ARG EXTRA_PKGS=""
